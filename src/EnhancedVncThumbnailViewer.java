@@ -160,6 +160,13 @@ public class EnhancedVncThumbnailViewer extends Frame
     /* Added on evnctv 1.003 */
     private JPanel captureScreenPanel;
     
+     /* Added Thermo-Clean  */
+     private void loadDefaultConfig() {
+        FileManager.loadFile("C:\\DigitalSignage\\default.config", "", this);
+        isSlideShow = true;
+        slideShowButton.setText("Stop slide");
+    }
+
     public EnhancedVncThumbnailViewer() {
         PlatformUI.getLookAndFeel();
         
@@ -269,7 +276,7 @@ public class EnhancedVncThumbnailViewer extends Frame
         ScreenCapture c = new ScreenCapture(this, viewersList);
         Thread captureScreen = new Thread(c);
         captureScreen.start();
-        
+        loadDefaultConfig();
         /* Added on evnctv 1.001 - To support slideshow */
         while (true) {
             if (pagination.isEmpty()) {
